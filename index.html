@@ -6,48 +6,33 @@
 <style>
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
-  html, body {
-    background: transparent; /* 배경은 투명하게 두고 */
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
   body {
+    background-color: transparent;
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
   }
 
   .container {
-    /* ▼▼▼ 여기가 핵심 디자인 (카드 스타일) ▼▼▼ */
-    background-color: #F1F1EF; /* 카드 배경색 (흰색) */
-    /* 만약 노션 배경이 흰색이면, 여기를 #F1F1EF (회색)으로 바꾸세요 */
-    
-    border: 1px solid #E9E9E7; /* 얇은 테두리 */
-    border-radius: 16px;       /* 둥근 모서리 */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* 살짝 그림자 */
-    
-    padding: 20px 40px;        /* 내부 여백 넉넉하게 */
     text-align: center;
-    min-width: 200px;          /* 최소 너비 확보 */
+    color: #37352f;
   }
 
   .title {
-    font-size: 32px;
+    font-size: 40px; /* 글자 크기 조절 */
     font-weight: 800;
     line-height: 1.2;
-    color: #37352f;
-    margin-bottom: 4px;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
   }
 
   .subtitle {
-    font-size: 13px;
-    color: #909090;
+    font-size: 14px;
+    color: #999;
+    margin-top: 8px;
     font-weight: 500;
   }
 </style>
@@ -60,9 +45,9 @@
 </div>
 
 <script>
-  // ▼▼▼ 날짜는 유지하세요 ▼▼▼
+  // ▼▼▼ 프로젝트 시작 날짜 수정 (YYYY-MM-DD) ▼▼▼
   const startDateStr = "2025-11-25"; 
-  // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+  // ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
 
   function updateWeek() {
     const startDate = new Date(startDateStr + "T00:00:00");
@@ -77,13 +62,14 @@
       const diffDays = Math.ceil(Math.abs(diffTime) / (1000 * 60 * 60 * 24));
       titleEl.innerText = `D - ${diffDays}`;
       titleEl.style.color = "#E16259";
-      subEl.innerText = "프로젝트 시작 전";
+      subEl.innerText = "프로젝트 킥오프 대기중 🚀";
     } else {
       const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
       const currentWeek = Math.floor(diffDays / 7) + 1;
       
-      titleEl.innerText = `WEEK ${currentWeek}`;
-      subEl.innerText = `Day +${diffDays + 1} 🔥`;
+      titleEl.innerText = `PROJECT WEEK ${currentWeek}`;
+      titleEl.style.color = "#37352f";
+      subEl.innerText = `Day +${diffDays + 1}일째 달리는 중 🔥`;
     }
   }
   updateWeek();
